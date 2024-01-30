@@ -1,0 +1,19 @@
+CREATE ROLE newuser WITH LOGIN PASSWORD 'password';
+
+ALTER ROLE newuser CREATEDB;
+
+// go to new db and run these
+GRANT ALL PRIVILEGES ON DATABASE exampledb TO newuser;
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO yourusername;
+GRANT USAGE, CREATE ON SCHEMA public TO newuser;
+
+
+// show users
+\du
+
+// change password
+ALTER USER yourusername WITH PASSWORD 'newpassword';
+
+// connect to db as user
+psql -U [username] -d [database] -h [host] -p [port]
+
